@@ -11,12 +11,14 @@ import { Graphics1Component } from './graphics1/graphics1.component';
 import { IncreaseComponent } from '../components/increase/increase.component';
 import { GraphicsDoughnutComponent } from '../components/graphics-doughnut/graphics-doughnut.component';
 
+
 // Modules
 import { SharedModule } from '../shared/shaerd.module';
 import { PAGES_ROUTES } from './pages.routes';
 
 // MODULO DE GRAFICAS
 import { ChartsModule } from 'ng2-charts';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -27,7 +29,9 @@ import { ChartsModule } from 'ng2-charts';
         ProgressComponent,
         Graphics1Component,
         IncreaseComponent,
-        GraphicsDoughnutComponent
+        GraphicsDoughnutComponent,
+        AccountSettingsComponent
+        
     ],
     exports: [
         PagesComponent,
