@@ -10,6 +10,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { Graphics1Component } from './graphics1/graphics1.component';
 import { IncreaseComponent } from '../components/increase/increase.component';
 import { GraphicsDoughnutComponent } from '../components/graphics-doughnut/graphics-doughnut.component';
+import { PromesasComponent } from './promesas/promesas.component';
 
 
 // Modules
@@ -22,6 +23,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 
 
 
+
 @NgModule({
     declarations: [
         PagesComponent,
@@ -30,8 +32,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         Graphics1Component,
         IncreaseComponent,
         GraphicsDoughnutComponent,
-        AccountSettingsComponent
-        
+        AccountSettingsComponent,
+        PromesasComponent
     ],
     exports: [
         PagesComponent,
