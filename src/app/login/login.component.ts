@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, APP_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { UserService } from '../services/service.index'
+import { User } from '../models/user.model';
+import { element } from 'protractor';
 
 declare function init_plugins();
+
+// Google
+declare const gapi: any;
+// ************************
 
 @Component({
   selector: 'app-login',
@@ -10,14 +18,84 @@ declare function init_plugins();
 })
 export class LoginComponent implements OnInit {
 
-  constructor( public _router: Router) { }
+  public remenberme: boolean;
+  public user: User;
+  public email: string;
+
+  // Google
+  public auth2: any;
+  // *****************
+
+  // tslint:disable-next-line: variable-name
+  constructor(
+    // tslint:disable-next-line: variable-name
+    public _router: Router,
+    // tslint:disable-next-line: variable-name
+    public _userService: UserService
+    ) {
+    this.remenberme = false;
+   }
 
   ngOnInit() {
     init_plugins();
+    this.googleInit();
+    this.email = localStorage.getItem('email') || '';
+
+    if (this.email  !== '') {
+      this.remenberme = true;
+    }
   }
 
-  ingresar() {
-    this._router.navigate(['/dashboard']);
+  // Metodo para hacer el login
+  login(forma: NgForm) {
+    if (forma.invalid) {
+      return;
+    }
+
+    this.user = new User(null, forma.value.email, forma.value.password);
+
+    this._userService.login(this.user, forma.value.remenberme).subscribe(
+      response => {
+        // console.log(response);
+        this._router.navigate(['/dashboard']);
+      }
+    );
+  }
+
+  // Google
+  googleInit() {
+
+    gapi.load('auth2', () => {
+
+      this.auth2 = gapi.auth2.init({
+        client_id: '995556041618-co4fd9p64bbp8s74hk5rcejto573tshd.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        scope: 'profile email'
+      });
+
+      this.attachSignIn(document.getElementById('btnGoogle'));
+
+    });
+  }
+
+  // tslint:disable-next-line: no-shadowed-variable
+  attachSignIn(element) {
+
+    this.auth2.attachClickHandler(element, {}, (googleUser) => {
+
+      // tslint:disable-next-line: prefer-const
+      // let profile = googleUser.getBasicProfile();
+      // tslint:disable-next-line: prefer-const
+      let token = googleUser.getAuthResponse().id_token;
+      this._userService.loginGoogle(token).subscribe(
+        response => {
+          // console.log(response);
+          //this._router.navigate(['/dashboard']);
+          window.location.href = '#/dashboard';
+        }
+      );
+      // console.log(token);
+    });
   }
 
 }
