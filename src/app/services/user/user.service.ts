@@ -8,6 +8,7 @@ import {map} from 'rxjs/operators';
 // import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { UploadFileService } from '../uploadFile/upload-file.service';
 
 
 @Injectable({
@@ -22,7 +23,9 @@ export class UserService {
     // tslint:disable-next-line: variable-name
     public _http: HttpClient,
     // tslint:disable-next-line: variable-name
-    public _router: Router
+    public _router: Router,
+    // tslint:disable-next-line: variable-name
+    public _uploadFileService: UploadFileService
   ) {
     this.URL = URL_SERVICES;
     this.loadStorage();
@@ -106,6 +109,33 @@ export class UserService {
     localStorage.removeItem('id');
 
     this._router.navigate(['/login']);
+
+   }
+
+   updateProfile(user: User) {
+    return this._http.put(this.URL + '/user/' + user._id + '?token=' + this.token, user)
+    .pipe(map((res: any) => {
+
+      this.saveLocalStorage(res.user._id, this.token, res.user);
+
+      Swal.fire('Mensaje', 'Perfil Actualizado Correctamente', 'success');
+
+      return true;
+
+    }));
+   }
+
+   changeImage(file: File, id: string) {
+    this._uploadFileService.uploadFile(file, 'user', id)
+        .then( (resp: any) => {
+          this.user.image = resp.user.image;
+          this.saveLocalStorage(id, this.token, this.user);
+          Swal.fire('Mensaje', 'Imagen Actualizada Correctamente', 'success');
+          //console.log(resp);
+        })
+        .catch( resp => {
+          console.log(resp);
+        });
 
    }
 }

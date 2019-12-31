@@ -8,12 +8,12 @@
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
                             <li class="user-profile">
-                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="../assets/images/users/profile.png" alt="user" /><span class="hide-menu">Steave Jobs </span></a>
+                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img [src]="user.image | image" alt="user" alt="user" /><span class="hide-menu">{{user.name}} </span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="javascript:void()">My Profile </a></li>
-                                    <li><a href="javascript:void()">My Balance</a></li>
-                                    <li><a href="javascript:void()">Inbox</a></li>
-                                    <li><a routerLink="/account-settigns" routerLinkActive="active">Account Setting</a></li>
+                                    <li><a routerLink="/profile" routerLinkActive="active">Mi Perfil </a></li>
+                                    <li><a href="#">Mi Balance</a></li>
+                                    <li><a href="#">Inbox</a></li>
+                                    <li><a routerLink="/account-settigns" routerLinkActive="active">Configuración de Cuenta</a></li>
                                     <li><a (click)="_userService.logout()" class="pointer">Logout</a></li>
                                 </ul>
                             </li>

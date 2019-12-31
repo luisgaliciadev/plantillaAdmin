@@ -19,6 +19,8 @@ import { PagesModule } from './pages/pages.module';
 // import { SettingsService } from './services/service.index';
 import { ServiceModule } from './services/service.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,0 +1,54 @@
+<div class="row animated fadeInRight">
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Información del Perfil</h4>
+                <h6 class="card-subtitle">{{user.name}}</h6>
+                <form ngNativeValidate #form="ngForm" (ngSubmit)="saveProfile(form.value)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre de Usuario</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [ngModel]="user.name" name="name" type="text" class="form-control" placeholder="Nombre del Usuario" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="user.email" name="email" type="email" [disabled]="user.google" class="form-control" placeholder="email" required>
+                        </div>
+                    </div>                 
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Imagen del Perfil</h4>
+                <!-- <h6 class="card-subtitle">Nombre del usuario</h6> -->
+
+                <img *ngIf="!tempImage" [src]="user.image | image" class="img-profile">
+                <img *ngIf="tempImage" [src]="tempImage" class="img-profile">
+
+                <input type="file" (change)="selectImage($event.target.files[0])" [disabled]="google">
+
+                <br><br>
+
+                <button type="button" class="btn btn-success waves-effect waves-light m-r-10" (click)="changeImage()" [disabled]="!imageUpload">
+                    <i class="fa fa-save"></i>
+                    Subir Imagen
+                </button>   
+
+            </div>
+        </div>
+    </div>
+
+</div>
