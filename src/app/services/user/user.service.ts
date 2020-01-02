@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user.model';
 import { URL_SERVICES } from '../../config/config';
 import {map} from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { UploadFileService } from '../uploadFile/upload-file.service';
 
 // Others
 // import swal from 'sweetalert';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { UploadFileService } from '../uploadFile/upload-file.service';
+
+
+
 
 
 @Injectable({
@@ -42,7 +45,7 @@ export class UserService {
       }));
    }
 
-   // Login
+   // Login Normal
    login(user: User, remenberme: boolean = false) {
 
     if (remenberme) {
@@ -90,6 +93,7 @@ export class UserService {
      return (this.token.length > 5) ? true : false;
    }
 
+   // Añadir items al localStorage
    loadStorage() {
      if (localStorage.getItem('token')) {
        this.token = localStorage.getItem('token');
@@ -100,6 +104,7 @@ export class UserService {
      }
    }
 
+   // Cerrar Sesion
    logout() {
     this.user = null;
     this.token = '';
@@ -112,11 +117,14 @@ export class UserService {
 
    }
 
+   // Actualizar perfil de usuario
    updateProfile(user: User) {
     return this._http.put(this.URL + '/user/' + user._id + '?token=' + this.token, user)
     .pipe(map((res: any) => {
 
-      this.saveLocalStorage(res.user._id, this.token, res.user);
+      if (user._id === this.user._id) {
+        this.saveLocalStorage(res.user._id, this.token, res.user);
+      }
 
       Swal.fire('Mensaje', 'Perfil Actualizado Correctamente', 'success');
 
@@ -125,6 +133,7 @@ export class UserService {
     }));
    }
 
+   // Cambiar imagen de perfil de usuario
    changeImage(file: File, id: string) {
     this._uploadFileService.uploadFile(file, 'user', id)
         .then( (resp: any) => {
@@ -136,6 +145,36 @@ export class UserService {
         .catch( resp => {
           console.log(resp);
         });
-
    }
+
+  // Metodo para listar usuarios
+  getUsers(desde: number = 0) {
+
+    return this._http.get(this.URL + '/user?desde=' + desde);
+
+  }
+
+  //  getUsers(desde: number = 1) {
+
+  //   return this._http.get(this.URL + '/user/' + desde);
+
+  //  }
+
+  // Metodo para buscar usuario
+  searchUser(termino: string) {
+    // console.log(termino);
+    return this._http.get(this.URL + '/search/collection/users/' + termino)
+    .pipe(map((res: any) => {
+
+      return res.users;
+
+    }));
+
+  }
+
+  // Borar Usuario
+  deleteUser(id: string) {
+    return this._http.delete(this.URL + '/user/' + id + '?token=' + this.token);
+  }
+
 }

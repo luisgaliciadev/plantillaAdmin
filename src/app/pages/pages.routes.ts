@@ -9,6 +9,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -24,6 +25,9 @@ const pagesRoutes: Routes = [
             { path: 'account-settigns', component: AccountSettingsComponent, data: {titulo: 'Ajustes'}},
             { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil de Usuario'}},
             { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'}},
+
+            // Matenimientos
+            { path: 'users', component: UsersComponent, data: {titulo: 'Administración de Usuarios'}},
             { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
         ]
     }
