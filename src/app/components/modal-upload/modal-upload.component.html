@@ -11,10 +11,10 @@
             </div>
             <div class="modal-body" align="center">
 
-                <img *ngIf="!tempImage" [src]="_modalUploadService.imageProfile | image" class="img-profile">
+                <img *ngIf="!tempImage" [src]="_modalUploadService.imageProfile | image: _modalUploadService.type" class="img-profile">
                 <img *ngIf="tempImage" [src]="tempImage" class="img-profile">
 
-                <input type="file" (change)="selectImage($event.target.files[0])" [disabled]="_modalUploadService.google">
+                <input [(ngModel)]="file" name="file" type="file" (change)="selectImage($event.target.files[0])" [disabled]="_modalUploadService.google">
 
             </div>
             <div class="modal-footer">

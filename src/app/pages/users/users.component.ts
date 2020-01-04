@@ -139,7 +139,7 @@ export class UsersComponent implements OnInit {
   }
 
   // Mostrar Modal
-  showModal(user: User) {
-    this._modalUploadServide.showModal('user', user);
+  showModal(type: string, id: string, image: string, google: boolean) {
+    this._modalUploadServide.showModal(type, id, image, google);
   }
 }

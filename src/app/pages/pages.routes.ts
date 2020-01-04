@@ -10,6 +10,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor.component';
 
 
 
@@ -28,6 +31,11 @@ const pagesRoutes: Routes = [
 
             // Matenimientos
             { path: 'users', component: UsersComponent, data: {titulo: 'Administración de Usuarios'}},
+            { path: 'hospitals', component: HospitalsComponent, data: {titulo: 'Administración de Hospitales'}},
+            { path: 'doctors', component: DoctorsComponent, data: {titulo: 'Administración de Medicos'}},
+            { path: 'doctor/:id', component: DoctorComponent, data: {titulo: 'Medico'}},
+
+            // Predeterminado
             { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
         ]
     }

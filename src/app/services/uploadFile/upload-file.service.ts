@@ -25,7 +25,7 @@ export class UploadFileService {
           if (xhr.status === 200) {
             console.log('imagen subida');
             resolve (JSON.parse(xhr.response));
-            
+
           } else {
             console.log('Fallo la subida');
             reject (JSON.parse(xhr.response));

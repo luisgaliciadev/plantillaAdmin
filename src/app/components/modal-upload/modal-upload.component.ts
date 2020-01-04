@@ -16,6 +16,7 @@ export class ModalUploadComponent implements OnInit {
   public imageUpload: File;
   public tempImage: string;
   public google: boolean;
+  public file: string;
 
   constructor(
     // tslint:disable-next-line: variable-name
@@ -23,7 +24,8 @@ export class ModalUploadComponent implements OnInit {
     // tslint:disable-next-line: variable-name
     public _modalUploadService: ModalUploadService
   ) {
-    console.log('modal listo');
+    // console.log('modal listo');
+    this.file = '';
   }
 
   ngOnInit() {
@@ -58,18 +60,21 @@ export class ModalUploadComponent implements OnInit {
   uploadImage() {
     this._uploadFile.uploadFile(this.imageUpload, this._modalUploadService.type, this._modalUploadService.id)
       .then( resp => {
-        console.log(resp);
+        // console.log(resp);
+        Swal.fire('Mensaje', 'Imagen Guardada Correctamente', 'success');
         this._modalUploadService.notificacion.emit(resp);
         this.closeModal();
       })
       .catch( err => {
-        console.log('Error Al subir la Imagen.');
+        Swal.fire('Mensaje', 'Error al Subir la Imagen', 'warning');
+        // console.log('Error Al subir la Imagen.');
       });
   }
 
   closeModal() {
     this.imageUpload = null;
     this.tempImage = null;
+    this.file = '';
 
     this._modalUploadService.hideModal();
   }

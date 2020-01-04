@@ -1,0 +1,48 @@
+<div class="row animated fadeInRight">
+
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0" *ngIf="!doctor._id">Registrar Medico</h3> 
+            <h3 class="box-title m-b-0" *ngIf="doctor._id">Actualizar Medico</h3>            
+            <hr>           
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #form="ngForm" ngNativeValidate (ngSubmit)="save(form.value)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de Médico</label>
+                            <input [(ngModel)]="doctor.name" name="name" type="text" class="form-control" placeholder="Nombre del Medico" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Hospital:</label>
+                            <select (change)="changeHospital($event.target.value)" [(ngModel)]="doctor.hospital" name="hospital" class="form-control" required>
+                                <option value="">Seleccione</option>
+                                <option *ngFor="let hospital of hospitals" [value]="hospital._id">{{hospital.name}}</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card card-body" align="center">
+            <h4 class="box-title m-b-0">Foto Medico</h4> 
+            <img (click)="showModal('doctor', doctor._id, doctor.image, false)"  class="rounded img-fluid pointer" [src]="doctor.image | image: 'doctor'" alt="">
+        </div>
+    </div>
+
+    <div class="col-md-3"  align="center">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">Foto Hospital</h4> 
+            <img class="rounded img-fluid" [src]="hospital.image | image: 'hospital'" alt="">
+        </div>
+    </div>
+
+</div>

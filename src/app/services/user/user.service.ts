@@ -169,7 +169,6 @@ export class UserService {
       return res.users;
 
     }));
-
   }
 
   // Borar Usuario

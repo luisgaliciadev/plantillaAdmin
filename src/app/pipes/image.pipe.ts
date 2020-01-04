@@ -8,11 +8,12 @@ import { URL_SERVICES } from '../config/config';
 })
 export class ImagePipe implements PipeTransform {
 
-  transform(img: string, type: string = 'user' ): any {
+  transform(img: string, type: string): any {
 
     // tslint:disable-next-line: no-shadowed-variable
     let url = URL_SERVICES + '/image';
-
+    // console.log(type);
+    // console.log(img);
     if (!img) {
       return url + '/user/no-img';
     }
@@ -28,8 +29,8 @@ export class ImagePipe implements PipeTransform {
         url += '/user/' + img;
         break;
 
-      case 'hosital':
-        url += '/hosital/' + img;
+      case 'hospital':
+        url += '/hospital/' + img;
         break;
 
       case 'doctor':

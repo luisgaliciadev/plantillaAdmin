@@ -29,11 +29,11 @@ export class ModalUploadService {
     this.imageProfile = null;
    }
 
-   showModal(type: string, user: User) {
+   showModal(type: string, id: string, image: string, google: boolean) {
     this.oculto = '';
-    this.id = user._id;
+    this.id = id;
     this.type = type;
-    this.google = user.google;
-    this.imageProfile = user.image;
+    this.google = google;
+    this.imageProfile = image;
    }
 }

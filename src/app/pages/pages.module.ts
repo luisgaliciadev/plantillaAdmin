@@ -13,6 +13,10 @@ import { GraphicsDoughnutComponent } from '../components/graphics-doughnut/graph
 import { PromesasComponent } from './promesas/promesas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { UsersComponent } from './users/users.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor.component';
 
 // Modules
 import { SharedModule } from '../shared/shaerd.module';
@@ -25,13 +29,6 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users/users.component';
-
-
-
-
-
-
 
 @NgModule({
     declarations: [
@@ -45,7 +42,10 @@ import { UsersComponent } from './users/users.component';
         PromesasComponent,
         ProfileComponent,
         UsersComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        HospitalsComponent,
+        DoctorsComponent,
+        DoctorComponent
     ],
     exports: [
         PagesComponent,

@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <input #input type="text" class="form-control" placeholder="Buscar Usuario" (keyup)="searchUser(input.value)">
+                    <input #input type="text" class="form-control" placeholder="Buscar Medicos" (keyup)="searchDoctor(input.value)">
 
                 </div>
             </div>
@@ -28,45 +28,46 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3>Listado de Usuarios (<small>{{totalRegistros}}</small>)</h3>
+
+                    <div class="text-right">
+                        <button [routerLink]="['/doctor','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Registrar Médico
+                        </button>
+                    </div>  
+                    
+
+                    <h3>Listado de Medicos (<small>{{totalRegistros}}</small>)</h3>
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Imagen</th>
-                                <th>Email</th>
-                                <th>Nombre</th>
-                                <th>Rol</th>
-                                <th>Auth</th>
+                                <th>Foto</th>                                
+                                <th>Nombre</th> 
+                                <th>Hospital</th>                                                            
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let user of users">
+                            <tr *ngFor="let doctor of doctors">
                                 <td class="w70">
-                                    <img (click)="showModal('user', user._id, user.image, user.google)" [src]="user.image | image: 'user'" class="img-profile-list pointer"/>
-                                </td>
-                                <td>{{user.email}}</td>
-                                <td>{{user.name}}</td>
-                                <td>
-                                    <select [(ngModel)]="user.role" name="role" class="form-control">
-                                        <option value = "ADMIN_ROLE">ADMIN_ROLE</option>
-                                        <option value = "USER_ROLE">USER_ROLE</option>
-                                    </select>
+                                    <img (click)="showModal('doctor', doctor._id, doctor.image, false)" [src]="doctor.image | image: 'doctor'" class="img-profile-list pointer"/>
                                 </td>
                                 <td>
-                                    <label *ngIf="user.google" class="label label-danger">Google</label>
-                                    <label *ngIf="!user.google" class="label label-info">Normal</label>
-                                </td>
-                                <td></td>
+                                    <!-- <input [(ngModel)]="doctor.name" name="name" type="text" class="form-control" placeholder="Nombre del Hospital" > -->
+                                    {{doctor.name}}
+                                </td> 
                                 <td>
-                                    <button class="btn btn-primary" (click)="updateRole(user)">
+                                    {{doctor.hospital.name}}
+                                </td>                                                                                        
+                                <td>
+                                    <button class="btn btn-primary" [routerLink]="['/doctor', doctor._id]">
                                         <i class="fa fa-save"></i>
                                     </button>
-                                    <button class="btn btn-danger" (click)="deleteUser(user)">
+                                    <button class="btn btn-danger" (click)="deleteDoctor(doctor._id)">
                                         <i class="fa fa-trash-o"></i>
                                     </button>
-                                </td>
+                                </td>                            
                             </tr>
                         </tbody>
                     </table>
