@@ -7,12 +7,16 @@ import { ProgressComponent } from './progress/progress.component';
 import { Graphics1Component } from './graphics1/graphics1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
-import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { HospitalsComponent } from './hospitals/hospitals.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctors/doctor.component';
+import { SearchComponent } from './search/search.component';
+
+// Guards
+import { LoginGuardGuard } from '../services/service.index';
+import { AdminGuard } from '../services/service.index';
 
 
 
@@ -28,9 +32,15 @@ const pagesRoutes: Routes = [
             { path: 'account-settigns', component: AccountSettingsComponent, data: {titulo: 'Ajustes'}},
             { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil de Usuario'}},
             { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'}},
+            { path: 'search/:termino', component: SearchComponent, data: {titulo: 'Buscador'}},
 
             // Matenimientos
-            { path: 'users', component: UsersComponent, data: {titulo: 'Administración de Usuarios'}},
+            {
+                path: 'users',
+                component: UsersComponent,
+                canActivate: [AdminGuard],
+                data: {titulo: 'Administración de Usuarios'}
+            },
             { path: 'hospitals', component: HospitalsComponent, data: {titulo: 'Administración de Hospitales'}},
             { path: 'doctors', component: DoctorsComponent, data: {titulo: 'Administración de Medicos'}},
             { path: 'doctor/:id', component: DoctorComponent, data: {titulo: 'Medico'}},

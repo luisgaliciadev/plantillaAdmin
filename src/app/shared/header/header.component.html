@@ -44,8 +44,9 @@
                     <!-- Search -->
                     <!-- ============================================================== -->
                     <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <form class="app-search">
-                            <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                        <div class="app-search">
+                            <input #InputSearch (keyup.enter)="search(InputSearch.value)" type="text" class="form-control" placeholder="Buscar"> <a class="srh-btn"><i class="ti-close"></i></a> 
+                        </div>
                     </li>
                     <!-- ============================================================== -->
                     
@@ -110,12 +111,12 @@
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="user.image | image" alt="user" class="profile-pic" /></a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="user.image | image: 'user'" alt="user" class="profile-pic" /></a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box" align = "center">
-                                        <div class="u-img"><img [src]="user.image | image" alt="user"></div>
+                                        <div class="u-img"><img [src]="user.image | image: 'user'" alt="user"></div>
                                         <div class="u-text">
                                             <h4>{{user.name}}</h4>
                                             <p class="text-muted">{{user.email}}</p><a routerLink="/profile" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>

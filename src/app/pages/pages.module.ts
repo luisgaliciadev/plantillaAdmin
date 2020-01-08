@@ -29,6 +29,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
 import { CommonModule } from '@angular/common';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { CommonModule } from '@angular/common';
         ModalUploadComponent,
         HospitalsComponent,
         DoctorsComponent,
-        DoctorComponent
+        DoctorComponent,
+        SearchComponent
     ],
     exports: [
         PagesComponent,

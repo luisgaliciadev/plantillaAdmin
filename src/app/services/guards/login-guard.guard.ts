@@ -24,7 +24,8 @@ export class LoginGuardGuard implements CanActivate {
       return true;
     } else {
       console.log('Guard: No loged');
-      this._router.navigate(['/login']);
+      this._userService.logout();
+      //this._router.navigate(['/login']);
       return false;
     }
   }
