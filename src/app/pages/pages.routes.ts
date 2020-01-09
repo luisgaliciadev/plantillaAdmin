@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 // Components
-import { PagesComponent } from './pages.component';
+// import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphics1Component } from './graphics1/graphics1.component';
@@ -15,18 +15,25 @@ import { DoctorComponent } from './doctors/doctor.component';
 import { SearchComponent } from './search/search.component';
 
 // Guards
-import { LoginGuardGuard } from '../services/service.index';
-import { AdminGuard } from '../services/service.index';
+// import { LoginGuardGuard } from '../services/service.index';
+//import { AdminGuard } from '../services/service.index';
+import { AdminGuard } from '../services/guards/admin.guard';
+import { RenewTokenGuard } from '../services/guards/renew-token.guard';
 
 
 
 const pagesRoutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [LoginGuardGuard],
-        children: [
-            { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'}},
+   // {
+        // path: '',
+        // component: PagesComponent,
+        // canActivate: [LoginGuardGuard],
+        // children: [
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                canActivate: [RenewTokenGuard],
+                data: {titulo: 'Dashboard'}
+            },
             { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress'}},
             { path: 'graphics1', component: Graphics1Component, data: {titulo: 'Graficas'}},
             { path: 'account-settigns', component: AccountSettingsComponent, data: {titulo: 'Ajustes'}},
@@ -47,8 +54,8 @@ const pagesRoutes: Routes = [
 
             // Predeterminado
             { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-        ]
-    }
+       // ]
+   // }
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes);

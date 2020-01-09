@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PagesComponent } from './pages/pages.component';
 
 // Routes
 import { APP_ROUTES } from './app.routes';
@@ -18,20 +19,23 @@ import { PagesModule } from './pages/pages.module';
 // Servicios
 // import { SettingsService } from './services/service.index';
 import { ServiceModule } from './services/service.module';
+import { SharedModule } from './shared/shaerd.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule,
+    //PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

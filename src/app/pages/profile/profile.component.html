@@ -35,7 +35,7 @@
                 <h4 class="card-title">Imagen del Perfil</h4>
                 <!-- <h6 class="card-subtitle">Nombre del usuario</h6> -->
 
-                <img *ngIf="!tempImage" [src]="user.image | image" class="img-profile">
+                <img *ngIf="!tempImage" [src]="user.image | image: 'user'" class="img-profile">
                 <img *ngIf="tempImage" [src]="tempImage" class="img-profile">
 
                 <input type="file" (change)="selectImage($event.target.files[0])" [disabled]="google">

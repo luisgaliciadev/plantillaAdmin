@@ -35,6 +35,25 @@ export class UserService {
     this.loadStorage();
    }
 
+   // Renovar token
+   renewToken() {
+     return this._http.get(this.URL + '/login/renewtoken?token=' + this.token)
+               .pipe(map( (res: any) => {
+
+                  this.token = res.token;
+                  localStorage.setItem('token', this.token);
+                  console.log('Token renew');
+                  return true;
+
+                }))
+
+                .pipe(catchError( (err: any) => {
+                  // const message = err.error.message;
+                  Swal.fire('Mensaje', 'No se puedo renovar el Token de Seguridad', 'error');
+                  return throwError(err);
+
+                }));
+   }
    // Registrar un Usuario
    userRegister(user: User) {
     return this._http.post(this.URL + '/user', user)
