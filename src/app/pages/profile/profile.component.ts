@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     public _userService: UserService
   ) {
     this.user = this._userService.user;
-    this.google = this.user.google;
+    this.google = this.user.GOOGLE;
    }
 
   ngOnInit() {
@@ -29,16 +29,16 @@ export class ProfileComponent implements OnInit {
 
   saveProfile(user: User) {
 
-    this.user.name = user.name;
-    if (!this.user.google) {
-      this.user.email = user.email;
+    this.user.NAME = user.NAME;
+    this.user.PHONE = user.PHONE;
+    if (!this.user.GOOGLE) {
+      this.user.EMAIL = user.EMAIL;
     }
-
 
     this._userService.updateProfile(this.user).subscribe(
       response => {
         // Swal.fire('Mensaje', 'Usuario Registrado Correctamente', 'success');
-        console.log(response);
+        // console.log(response);
       }
     );
 
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changeImage() {
-    this._userService.changeImage(this.imageUpload, this.user._id);
+    this._userService.changeImage(this.imageUpload, this.user.ID_USER);
   }
 
 

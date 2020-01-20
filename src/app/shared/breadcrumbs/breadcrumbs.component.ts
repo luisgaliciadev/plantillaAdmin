@@ -15,9 +15,10 @@ export class BreadcrumbsComponent implements OnInit {
                private title: Title,
                private meta: Meta) {
    this.getDataRoute().subscribe( data => {
-      //console.log(data);
+      // console.log(data);
       this.titulo = data.titulo;
-      this.title.setTitle('AdminPro - ' + this.titulo);
+     //  this.title.setTitle('ServalApp - ' + this.titulo);
+      this.title.setTitle('ServalApp');
 
       const metaTag: MetaDefinition = {
         name: 'description',

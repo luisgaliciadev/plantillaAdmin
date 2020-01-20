@@ -89,7 +89,7 @@ export class UsersComponent implements OnInit {
   // Borar Usuario
   deleteUser(user: User) {
 
-    if (user._id === this._userService.user._id) {
+    if (user.ID_USER === this._userService.user.ID_USER) {
       Swal.fire('Mensaje', 'No Puedes Eliminar Este Usuario', 'error');
       return;
     } else {
@@ -106,7 +106,7 @@ export class UsersComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           //console.log(user);
-          this._userService.deleteUser(user._id).subscribe(
+          this._userService.deleteUser(user.ID_USER).subscribe(
             response => {
               console.log(response);
               this.loading = true;

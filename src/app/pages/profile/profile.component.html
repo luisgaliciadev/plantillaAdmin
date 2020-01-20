@@ -4,22 +4,31 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Información del Perfil</h4>
-                <h6 class="card-subtitle">{{user.name}}</h6>
+                <h6 class="card-subtitle">{{user.NAME}}</h6>
                 <form ngNativeValidate #form="ngForm" (ngSubmit)="saveProfile(form.value)" class="form p-t-20">
                     <div class="form-group">
                         <label for="exampleInputuname">Nombre de Usuario</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input [ngModel]="user.name" name="name" type="text" class="form-control" placeholder="Nombre del Usuario" required>
+                            <input [ngModel]="user.NAME" name="NAME" type="text" class="form-control" placeholder="Nombre del Usuario" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Email</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-email"></i></div>
-                            <input [ngModel]="user.email" name="email" type="email" [disabled]="user.google" class="form-control" placeholder="email" required>
+                            <input [ngModel]="user.EMAIL" name="EMAIL" type="email" [disabled]="user.GOOGLE" class="form-control" placeholder="email" required>
                         </div>
-                    </div>                 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Telefono</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-mobile"></i></div>
+                            <input [ngModel]="user.PHONE" name="PHONE" type="text" class="form-control" placeholder="Telefono Contacto" required>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
                         <i class="fa fa-save"></i>
                         Guardar
@@ -35,7 +44,7 @@
                 <h4 class="card-title">Imagen del Perfil</h4>
                 <!-- <h6 class="card-subtitle">Nombre del usuario</h6> -->
 
-                <img *ngIf="!tempImage" [src]="user.image | image: 'user'" class="img-profile">
+                <img *ngIf="!tempImage" [src]="user.IMAGE | image: 'user'" class="img-profile">
                 <img *ngIf="tempImage" [src]="tempImage" class="img-profile">
 
                 <input type="file" (change)="selectImage($event.target.files[0])" [disabled]="google">

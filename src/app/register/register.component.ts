@@ -84,6 +84,6 @@ export class RegisterComponent implements OnInit {
 
       }
     );
-    // console.log(this.forma.value);
+    // console.log(this.user);
   }
 }

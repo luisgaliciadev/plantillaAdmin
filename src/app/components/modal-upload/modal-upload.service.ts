@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
 export class ModalUploadService {
 
   public type: string;
-  public id: string;
+  public id: number;
 
   public oculto: string;
   public notificacion;
@@ -29,7 +29,7 @@ export class ModalUploadService {
     this.imageProfile = null;
    }
 
-   showModal(type: string, id: string, image: string, google: boolean) {
+   showModal(type: string, id: number, image: string, google: boolean) {
     this.oculto = '';
     this.id = id;
     this.type = type;

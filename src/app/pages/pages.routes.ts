@@ -14,11 +14,17 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctors/doctor.component';
 import { SearchComponent } from './search/search.component';
 
+// Components SERVAL
+import { CompanysComponent } from './companys/companys.component';
+import { AddcompanyComponent } from './addcompany/addcompany.component';
+
 // Guards
 // import { LoginGuardGuard } from '../services/service.index';
-//import { AdminGuard } from '../services/service.index';
+// import { AdminGuard } from '../services/service.index';
 import { AdminGuard } from '../services/guards/admin.guard';
 import { RenewTokenGuard } from '../services/guards/renew-token.guard';
+
+
 
 
 
@@ -40,6 +46,10 @@ const pagesRoutes: Routes = [
             { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil de Usuario'}},
             { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'}},
             { path: 'search/:termino', component: SearchComponent, data: {titulo: 'Buscador'}},
+
+            // SERVAL
+            { path: 'companys', component: CompanysComponent, data: {titulo: 'Empresas'}},
+            { path: 'company/:id', component: AddcompanyComponent, data: {titulo: 'Empresa'}},
 
             // Matenimientos
             {

@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public user: User;
 
- 
   constructor(
      // tslint:disable-next-line: variable-name
     public _userService: UserService,
@@ -21,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user = this._userService.user;
+    // console.log('user: ' + this.user.NAME);
   }
 
   search(termino) {

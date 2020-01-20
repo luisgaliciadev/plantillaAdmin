@@ -9,8 +9,9 @@ import { SettingsService } from './services/service.index';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'adminPro';
+  title = 'ServalApp';
 
+  // tslint:disable-next-line: variable-name
   constructor( public _ajustes: SettingsService) {
 
   }

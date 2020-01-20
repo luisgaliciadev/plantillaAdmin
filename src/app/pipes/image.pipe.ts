@@ -29,8 +29,8 @@ export class ImagePipe implements PipeTransform {
         url += '/user/' + img;
         break;
 
-      case 'hospital':
-        url += '/hospital/' + img;
+      case 'company':
+        url += '/company/' + img;
         break;
 
       case 'doctor':

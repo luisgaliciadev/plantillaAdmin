@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../services/service.index'
 import { User } from '../models/user.model';
-import { element } from 'protractor';
+
 
 declare function init_plugins();
 
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       response => {
         // console.log(response);
         this._router.navigate(['/dashboard']);
+        //window.location.href = '#/dashboard';
       }
     );
   }
@@ -94,7 +95,7 @@ export class LoginComponent implements OnInit {
           window.location.href = '#/dashboard';
         }
       );
-      // console.log(token);
+      //console.log(token);
     });
   }
 

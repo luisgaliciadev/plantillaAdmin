@@ -30,6 +30,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PipesModule } from '../pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
+import { CompanysComponent } from './companys/companys.component';
+import { AddcompanyComponent } from './addcompany/addcompany.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import { SearchComponent } from './search/search.component';
         HospitalsComponent,
         DoctorsComponent,
         DoctorComponent,
-        SearchComponent
+        SearchComponent,
+        CompanysComponent,
+        AddcompanyComponent
     ],
     exports: [
         // PagesComponent,

@@ -9,7 +9,7 @@ export class UploadFileService {
 
   constructor() { }
 
-  uploadFile(file: File, type: string, id: string) {
+  uploadFile(file: File, type: string, id: number) {
 
     return new Promise( (resolve, reject) => {
 
@@ -20,7 +20,8 @@ export class UploadFileService {
 
       formData.append('image', file, file.name );
 
-      xhr.onreadystatechange = function () {
+      // tslint:disable-next-line: only-arrow-functions
+      xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             console.log('imagen subida');

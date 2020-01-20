@@ -8,7 +8,7 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" routerLink="/dashboard">
                     <!-- Logo icon --><b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
@@ -53,7 +53,7 @@
                     <!-- ============================================================== -->
                     <!-- Messages -->
                     <!-- ============================================================== -->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
@@ -64,25 +64,25 @@
                                 </li>
                                 <li>
                                     <div class="message-center">
-                                        <!-- Message -->
+                                       
                                         <a href="#">
                                             <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                             <div class="mail-contnet">
                                                 <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                         </a>
-                                        <!-- Message -->
+                                      
                                         <a href="#">
                                             <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                             <div class="mail-contnet">
                                                 <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                         </a>
-                                        <!-- Message -->
+                                     
                                         <a href="#">
                                             <div class="user-img"> <img src="assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                             <div class="mail-contnet">
                                                 <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                         </a>
-                                        <!-- Message -->
+                                      
                                         <a href="#">
                                             <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                             <div class="mail-contnet">
@@ -95,7 +95,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- ============================================================== -->
                     <!-- End Messages -->
                     <!-- ============================================================== -->
@@ -111,23 +111,23 @@
                     <!-- Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="user.image | image: 'user'" alt="user" class="profile-pic" /></a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="user.IMAGE | image: 'user'" alt="user" class="profile-pic" /></a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box" align = "center">
-                                        <div class="u-img"><img [src]="user.image | image: 'user'" alt="user"></div>
+                                        <div class="u-img"><img [src]="user.IMAGE | image: 'user'" alt="user"></div>
                                         <div class="u-text">
-                                            <h4>{{user.name}}</h4>
-                                            <p class="text-muted">{{user.email}}</p><a routerLink="/profile" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
+                                            <h4>{{user.NAME}}</h4>
+                                            <p class="text-muted">{{user.EMAIL}}</p><a routerLink="/profile" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
                                     </div>
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a routerLink="/profile"><i class="ti-user"></i> Mi Perfil</a></li>
-                                <li><a href="#"><i class="ti-wallet"></i> Mi Balance</a></li>
-                                <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                <!-- <li><a href="#"><i class="ti-wallet"></i> Mi Balance</a></li> -->
+                                <!-- <li><a href="#"><i class="ti-email"></i> Inbox</a></li> -->
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="ti-settings"></i> Configuración de Cuenta</a></li>
+                                <!-- <li><a href="#"><i class="ti-settings"></i> Temas</a></li> -->
                                 <li role="separator" class="divider"></li>
                                 <li><a (click)="_userService.logout()" class="pointer"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>

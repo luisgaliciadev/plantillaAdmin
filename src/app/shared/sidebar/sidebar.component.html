@@ -1,42 +1,80 @@
-        <!-- ============================================================== -->
+ <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar">
-                <!-- Sidebar scroll-->
-                <div class="scroll-sidebar">
-                    <!-- Sidebar navigation-->
-                    <nav class="sidebar-nav">
-                        <ul id="sidebarnav">
-                            <li class="user-profile">
-                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img [src]="user.image | image: 'user'" alt="user" alt="user" /><span class="hide-menu">{{user.name}} </span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a routerLink="/profile" routerLinkActive="active">Mi Perfil </a></li>
-                                    <li><a href="#">Mi Balance</a></li>
-                                    <li><a href="#">Inbox</a></li>
-                                    <li><a routerLink="/account-settigns" routerLinkActive="active">Configuración de Cuenta</a></li>
-                                    <li><a (click)="_userService.logout()" class="pointer">Logout</a></li>
-                                </ul>
-                            </li>
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="user-profile">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img [src]="user.IMAGE | image: 'user'" alt="user" alt="user" /><span class="hide-menu">{{user.NAME}} </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a routerLink="/profile" routerLinkActive="active">Mi Perfil </a></li>
+                                <li><a routerLink="/companys" routerLinkActive="active">Mis Empresas</a></li>
+                                <!-- <li><a href="#">Inbox</a></li> -->
+                                <li><a routerLink="/account-settigns" routerLinkActive="active">Temas</a></li>
+                                <li><a (click)="_userService.logout()" class="pointer">Logout</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">Menú de Opciones</li>
+
+                        <li *ngFor="let menu of _sidebar.menu"> 
+
+                            <a style="background-color: transparent;" *ngIf="!menu.FG_SUB_MENU && menu.ID_TYPE_MENU === 1"  [routerLink]="[menu.URL]" routerLinkActive="active"><i [class]="menu.ICON"></i><span class="hide-menu">{{menu.DS_MODULE}}</span></a>
                            
-                            <li class="nav-devider"></li>
-                            <li class="nav-small-cap">PERSONAL</li>
-                            <li *ngFor="let menu of _sidebar.menu"> 
-                                <a class="has-arrow waves-effect waves-dark"
-                                aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">{{menu.titulo}} <span 
-                                class="label label-rouded label-themecolor pull-right">{{menu.submenu.length}}</span></span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li *ngFor="let submenu of menu.submenu">
-                                        <a [routerLink]="[submenu.url]" routerLinkActive="active">{{submenu.titulo}} </a>
-                                    </li>
-                                    
-                                </ul>
-                            </li>                            
-                        </ul>
-                    </nav>
-                    <!-- End Sidebar navigation -->
-                </div>
-                <!-- End Sidebar scroll-->
-            </aside>
-            <!-- ============================================================== -->
-            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-            <!-- ============================================================== -->
+                          
+                                
+                           
+                            <a *ngIf="menu.FG_SUB_MENU && menu.ID_TYPE_MENU === 1" class="has-arrow waves-effect waves-dark"
+                            aria-expanded="false"><i [class]="menu.ICON"></i><span class="hide-menu">{{menu.DS_MODULE}} </span></a>
+
+                            <ul aria-expanded="false" class="collapse">
+                                <li *ngFor="let submenu of _sidebar.menu">
+                                    <a *ngIf="!submenu.FG_SUB_MENU && submenu.ID_TYPE_MENU === 2 && menu.ID_MODULE == submenu.ID_MODULE_SEC" [routerLink]="[submenu.URL]" routerLinkActive="active">{{submenu.DS_MODULE}}</a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+
+
+                        
+                        <!-- <li *ngFor="let menu of _sidebar.menu"> 
+
+                            <a class="has-arrow waves-effect waves-dark"
+                            aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">{{menu.titulo}} <span 
+                            class="label label-rouded label-themecolor pull-right">{{menu.submenu.length}}</span></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li *ngFor="let submenu of menu.submenu">
+                                    <a [routerLink]="[submenu.url]" routerLinkActive="active">{{submenu.titulo}} </a>
+                                </li>                                
+                            </ul>
+
+                        </li> -->
+
+                        <!-- <li *ngFor="let menu of _sidebar.menus"> 
+
+                            <a *ngIf="!menu.FG_SUB_MENU" class="pointer" [routerLink]="[menu.URL]" routerLinkActive="active"><i class="mdi mdi-gauge"></i><span class="hide-menu">{{menu.DS_MODULE}}</span></a>
+            
+                            <a *ngIf="menu.FG_SUB_MENU" class="has-arrow waves-effect waves-dark"
+                            aria-expanded="false"><i [class]="menu.ICON"></i><span class="hide-menu">{{menu.DS_MODULE}} </span></a>
+                            
+                            <ul aria-expanded="false" class="collapse">
+                                <li *ngFor="let submenu of _sidebar.modules">
+                                    <a *ngIf="menu.ID_MODULE == submenu.ID_MODULE_SEC"  [routerLink]="[submenu.URL]" routerLinkActive="active">{{submenu.DS_MODULE}}</a>
+                                </li>
+                            </ul>
+
+                        </li> -->
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->

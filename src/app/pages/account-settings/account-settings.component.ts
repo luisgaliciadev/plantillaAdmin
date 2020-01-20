@@ -23,14 +23,16 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   cambiarColor(tema: string, link: any) {
-    //console.log(link);
+    // console.log(link);
     this.aplicarCheck(link);
     this._ajustes.aplicarTema( tema );
   }
 
   aplicarCheck(link: any) {
+    // tslint:disable-next-line: prefer-const
     let selectores: any = document.getElementsByClassName('selector');
 
+    // tslint:disable-next-line: prefer-const
     for ( let ref of selectores ) {
       ref.classList.remove('working');
     }
@@ -40,10 +42,13 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   colocarCheck() {
+    // tslint:disable-next-line: prefer-const
     let selectores: any = document.getElementsByClassName('selector');
 
+    // tslint:disable-next-line: prefer-const
     let tema  = this._ajustes.ajustes.tema;
 
+    // tslint:disable-next-line: prefer-const
     for ( let ref of selectores ) {
      if ( ref.getAttribute('data-theme') === tema ) {
        ref.classList.add('working');

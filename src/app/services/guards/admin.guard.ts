@@ -18,7 +18,8 @@ export class AdminGuard implements CanActivate {
   }
   canActivate() {
 
-    if (this._userService.user.role === 'ADMIN_ROLE') {
+    // tslint:disable-next-line: no-conditional-assignment
+    if (this._userService.user.ID_ROLE = 1) {
       return true;
     } else {
       console.log('Bloqueado por el AdminGuard.');
